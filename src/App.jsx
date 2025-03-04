@@ -6,23 +6,24 @@ import { NetworkProvider } from './contexts/NetworkContext';
 import AppRoutes from './routes/AppRoutes';
 import { Toaster } from './components/ui/Toaster';
 import questConfig from './questConfig';
+import './App.css';
 
 function App() {
   return (
-    <QuestProvider
-      apiKey={questConfig.APIKEY}
-      entityId={questConfig.ENTITYID}
-      apiType="PRODUCTION"
-    >
-      <Router>
+    <Router>
+      <QuestProvider
+        apiKey={questConfig.APIKEY}
+        entityId={questConfig.ENTITYID}
+        apiType="PRODUCTION"
+      >
         <AuthProvider>
           <NetworkProvider>
             <AppRoutes />
             <Toaster />
           </NetworkProvider>
         </AuthProvider>
-      </Router>
-    </QuestProvider>
+      </QuestProvider>
+    </Router>
   );
 }
 
